@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "avl-tree.h"
 
 void rotateLeft(AvlNode **node){
@@ -106,12 +108,12 @@ int insert(AvlNode **node, int key){
 	}
 }
 
-void printTree(AvlNode **node, int height){
+void printInOrder(AvlNode **node, int height){
 
 	if(*node){
-		printTree(&(*node)->left, height+1);
-		printf("key: %d\tbalance: %d\tnivelNo: %d\n", (*node)->key, (*node)->balance, height);
-		printTree(&(*node)->right, height+1);
+		printInOrder(&(*node)->left, height+1);
+		printf("key: %d\tbalance: %d\theight: %d\n", (*node)->key, (*node)->balance, height);
+		printInOrder(&(*node)->right, height+1);
 	}
 }
 

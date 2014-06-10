@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 typedef struct AvlNode{
 	int balance, key;
 	struct AvlNode *left, *right;

@@ -15,7 +15,7 @@ int main(){
 	insert(&node, 3);
 	insert(&node, 5);
 	insert(&node, 7);
-	printTree(&node, 0);
+	printInOrder(&node, 0);
 	printf("\n");
 	return 0;
 }
