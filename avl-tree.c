@@ -25,18 +25,18 @@ void rotateRight(AvlNode **node){
 int insert(AvlNode **node, int key){
 
 	if(!*node){
-        AvlNode *newNode = (AvlNode*)malloc(sizeof(AvlNode));
-        if(!newNode){
+		AvlNode *newNode = (AvlNode*)malloc(sizeof(AvlNode));
+		if(!newNode){
 			printf("\nMALLOC FAILURE");
 			exit(0);
 		}
 		newNode->right = newNode->left = NULL;
 		newNode->key = key;
 		newNode->balance = 0;
-        *node = newNode;
-        return 1;
+		*node = newNode;
+		return 1;
 	}
-    else if(key < (*node)->key){
+	else if(key < (*node)->key){
 		if(insert(&(*node)->left, key)){
 			(*node)->balance--;
 			switch((*node)->balance){
@@ -108,6 +108,15 @@ int insert(AvlNode **node, int key){
 	}
 }
 
+void printPreOrder(AvlNode **node, int height){
+
+	if(*node){
+		printf("key: %d\tbalance: %d\theight: %d\n", (*node)->key, (*node)->balance, height);
+		printPreOrder(&(*node)->left, height+1);
+		printPreOrder(&(*node)->right, height+1);
+	}
+}
+
 void printInOrder(AvlNode **node, int height){
 
 	if(*node){
@@ -116,6 +125,16 @@ void printInOrder(AvlNode **node, int height){
 		printInOrder(&(*node)->right, height+1);
 	}
 }
+
+void printPosOrder(AvlNode **node, int height){
+
+	if(*node){
+		printPosOrder(&(*node)->left, height+1);
+		printPosOrder(&(*node)->right, height+1);
+		printf("key: %d\tbalance: %d\theight: %d\n", (*node)->key, (*node)->balance, height);
+	}
+}
+
 
 AvlNode* delete(AvlNode **node, int key, short int *height){
 
@@ -203,5 +222,17 @@ AvlNode* delete(AvlNode **node, int key, short int *height){
 	}
 	else{
 		if(delete(&(*node)->right, key, height));
+	}
+}
+
+/*
+ *	delete all nodes of the tree
+ * */
+
+void freeTree(AvlNode **node){
+	if(*node){
+		freeTree(&(*node)->left);
+		freeTree(&(*node)->right);
+		free(*node);
 	}
 }

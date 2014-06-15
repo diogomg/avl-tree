@@ -12,3 +12,5 @@ int insert(AvlNode **node, int key);
 void printTree(AvlNode **node, int height);
 
 AvlNode* delete(AvlNode **node, int key, short int *height);
+
+void freeTree(AvlNode **node);
