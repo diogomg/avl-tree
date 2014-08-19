@@ -133,25 +133,25 @@ void printPreOrder(binTree *tree){
 
     if(tree){
         printf("%d ", tree->key);
-        printPrefix(tree->left);
-        printPrefix(tree->right);
+        printPreOrder(tree->left);
+        printPreOrder(tree->right);
     }
 }
 
 void printInOrder(binTree *tree){
 
     if(tree){
-        printInfix(tree->left);
+        printInOrder(tree->left);
         printf("%d ", tree->key);
-        printInfix(tree->right);
+        printInOrder(tree->right);
     }
 }
 
 void printPostOrder(binTree *tree){
 
     if(tree){
-        printPosfix(tree->left);
-        printPosfix(tree->right);
+        printPostOrder(tree->left);
+        printPostOrder(tree->right);
         printf("%d ", tree->key);
     }
 }
