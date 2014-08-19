@@ -1,16 +1,20 @@
-typedef struct AvlNode{
-	int balance, key;
-	struct AvlNode *left, *right;
-} AvlNode;
+typedef int keyType;
 
-void rotateLeft(AvlNode **node);
+typedef struct avlNode{
+    keyType balance, key;
+    struct avlNode *left, *right;
+} avlNode;
 
-void rotateRight(AvlNode **node);
+void rotateLeft(avlNode **node);
 
-int insert(AvlNode **node, int key);
+void rotateRight(avlNode **node);
 
-void printTree(AvlNode **node, int height);
+int insert(avlNode **node, keyType key);
 
-AvlNode* delete(AvlNode **node, int key, short int *height);
+void prkeyTypePreOrder(avlNode **node, keyType height);
 
-void freeTree(AvlNode **node);
+void prkeyTypeInOrder(avlNode **node, keyType height);
+
+void prkeyTypePosOrder(avlNode **node, keyType height);
+
+void freeTree(avlNode **node);
